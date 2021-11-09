@@ -21,7 +21,7 @@
 </head>
 
 <body class="font-sans antialiased grid grid-cols-6">
-  <livewire:sidebar />
+  <x-sidebar />
 
   <div class="min-h-screen bg-gray-100 col-start-2 col-span-5">
     @livewire('navigation-menu')
@@ -29,7 +29,7 @@
     <!-- Page Heading -->
     @if (isset($header))
     <header class="bg-white shadow">
-      <div class="mx-auto py-6 px-4 sm:px-6 lg:px-8">
+      <div class="mx-auto py-6 px-4 sm:px-6 lg:px-8 flex">
         {{ $header }}
       </div>
     </header>

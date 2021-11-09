@@ -2,12 +2,16 @@
 
 namespace App\Http\Livewire\Admin;
 
+use App\Models\Store as StoreModel;
 use Livewire\Component;
 
 class Store extends Component
 {
+    public $visible = false;
+    
     public function render()
     {
-        return view('livewire.admin.store');
+        $stores = StoreModel::all();
+        return view('livewire.admin.store', compact('stores'));
     }
 }

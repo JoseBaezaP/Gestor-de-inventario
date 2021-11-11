@@ -45,6 +45,11 @@ class Store extends Component
         $this->visible = false;
     }
 
+    public function delete(StoreModel $store)
+    {
+        $store->delete();
+    }
+
     public function render()
     {
         $stores = StoreModel::all();

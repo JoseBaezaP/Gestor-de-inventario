@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Admin\Store;
 use App\Http\Livewire\Admin\Employee;
+use App\Http\Livewire\Employee\Product;
+use App\Http\Livewire\Employee\Allstores;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,9 +22,10 @@ Route::get('/', function () {
 });
 
 Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
-    Route::get('/inventario', function () {
-        return view('dashboard');
-    })->name('inventory');
+
+    Route::get('/inventario', Product::class)->name('inventory');
+    Route::get('/general', Allstores::class)->name('general');
+
     Route::group(['middleware' => 'is_admin', 'as' => 'register.'], function () {
         Route::get('/tiendas', Store::class)->name('stores');
         Route::get('/encargados', Employee::class)->name('employees');

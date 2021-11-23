@@ -20,5 +20,12 @@ class StoreSeeder extends Seeder
             'phone' => '9381330000',
             'employee_id' => 2,
         ]);
+
+        DB::table('stores')->insert([
+            'name' => "Local Altabrisa",
+            'address' => 'Calle 33 #21 Col. Altabrisa',
+            'phone' => '9999999',
+            'employee_id' => 2,
+        ]);
     }
 }

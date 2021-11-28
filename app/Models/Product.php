@@ -13,7 +13,7 @@ class Product extends Model
         'name',
         'quantity',
         'store_id',
-        'updated_at',
+        'price'
         ];
    
       public function store() {

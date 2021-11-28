@@ -8,7 +8,7 @@
         Existencias
       </th>
       <th>
-        Ultima Actualización
+        Precio
       </th>
       <th>
         Acciones

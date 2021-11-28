@@ -18,14 +18,16 @@ class ProductSeeder extends Seeder
             'name' => "Calculadora CASIO",
             'quantity' => '7',
             'store_id' => 1,
-            'updated_at' => '2021-11-23 04:32:39'
+            'updated_at' => '2021-11-23 04:32:39',
+            'price' => 250.00
         ]);
 
         DB::table('products')->insert([
             'name' => "Engrapadora",
             'quantity' => '3',
             'store_id' => 2,
-            'updated_at' => '2021-11-23 05:32:39'
+            'updated_at' => '2021-11-23 05:32:39',
+            'price' => 15.00
         ]);
     }
 }

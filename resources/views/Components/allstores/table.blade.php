@@ -8,10 +8,10 @@
         Existencias
       </th>
       <th>
-        Sucursal
+        Precio
       </th>
       <th>
-        Acciones
+        Sucursal
       </th>
     </tr>
   </thead>

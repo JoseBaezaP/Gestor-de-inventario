@@ -9,15 +9,12 @@ use Livewire\Component;
 class Product extends Component
 {
     public $visible = false;
-    public $stores;
-    public $location = 1;
     public ProductModel $product;
 
     protected $rules = [
         'product.name' => 'required',
         'product.quantity' => 'required|number',
-        'product.store_id' => 'required',
-        'product.updated_at' => 'required',
+        'product.price' => 'required|number'
     ];
 
     public function create() 
@@ -32,14 +29,27 @@ class Product extends Component
         $this->visible = true;
     }
 
+    public function decrement(ProductModel $product)
+    {
+        if($product->quantity > 0) {
+            $product->decrement('quantity');
+        }
+    }
+
+    public function increment(ProductModel $product)
+    {
+       $product->increment('quantity');
+    }
+
     public function save()
     {
         ProductModel::updateOrCreate(
             ['id' => $this->product->id],
             [
                 'name' => $this->product->name,
-                'quantity' =>  $this->product->quantity,
-                'store_id' =>  $this->product->store_id,
+                'quantity' => $this->product->quantity,
+                'price' => $this->product->price,
+                'store_id' => auth()->user()->store->id,
             ]
         );
         $this->visible = false;
@@ -52,8 +62,7 @@ class Product extends Component
 
     public function render()
     {
-        $products = ProductModel::where('store_id',$this->location)->get();
-        $this->stores = Store::all();
+        $products = ProductModel::where('store_id',auth()->user()->store->id)->get();
         return view('livewire.employee.product', compact('products'));
     }
 }

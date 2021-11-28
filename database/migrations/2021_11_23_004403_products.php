@@ -18,6 +18,7 @@ class Products extends Migration
             $table->string('name');
             $table->integer('quantity');
             $table->foreignId('store_id')->constrained();
+            $table->float('price');
             $table->timestamps();
         });
     }

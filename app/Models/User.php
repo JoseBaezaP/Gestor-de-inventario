@@ -9,7 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
-use App\Model\Store;
+use App\Models\Store;
 
 class User extends Authenticatable
 {
@@ -66,6 +66,6 @@ class User extends Authenticatable
 
     public function store()
     {
-        return $this->hasOne(Store::class, 'id');
+        return $this->hasOne(Store::class,'employee_id');
     }
 }

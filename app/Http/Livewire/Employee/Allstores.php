@@ -6,11 +6,19 @@ use App\Models\Product as ProductModel;
 use App\Models\Store;
 use App\Models\User;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Allstores extends Component
 {
-    public $visible = false;
+    use WithPagination;
+    
+    public $visible = false, $search;
     public Store $store;
+
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
 
     public function show($id)
     {
@@ -20,7 +28,7 @@ class Allstores extends Component
     
     public function render()
     {
-        $products = ProductModel::with('store')->get();
+        $products = ProductModel::with('store')->where('name', 'like', '%'.$this->search.'%')->paginate(10);
         return view('livewire.employee.allstores', compact('products'));
     }
 }

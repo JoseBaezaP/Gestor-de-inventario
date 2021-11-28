@@ -2,20 +2,25 @@
 
 namespace App\Http\Livewire\Employee;
 
-use App\Models\Product as ProductModel;
-use App\Models\Store;
-use Livewire\Component;
 use Livewire\WithFileUploads;
+use Livewire\WithPagination;
+use Livewire\Component;
+
+use App\Models\Product as ProductModel;
 use App\Imports\ProductsImport;
+use App\Models\Store;
+
 use Maatwebsite\Excel\Facades\Excel;
+
 
 class Product extends Component
 {
     use WithFileUploads;
+    use WithPagination;
     
     public $visible = false;
     public ProductModel $product;
-    public $file;
+    public $file, $search;
 
     protected $rules = [
         'product.name' => 'required',
@@ -27,6 +32,11 @@ class Product extends Component
     {
         $this->product = ProductModel::make();
         $this->visible = true;
+    }
+
+    public function updatingSearch()
+    {
+        $this->resetPage();
     }
 
     public function updatedFile($value) {
@@ -72,7 +82,9 @@ class Product extends Component
 
     public function render()
     {
-        $products = ProductModel::where('store_id',auth()->user()->store->id)->get();
+        $products = ProductModel::where('store_id',auth()->user()->store->id)
+                    ->where('name', 'like', '%'.$this->search.'%')
+                    ->paginate(10);
         return view('livewire.employee.product', compact('products'));
     }
 }

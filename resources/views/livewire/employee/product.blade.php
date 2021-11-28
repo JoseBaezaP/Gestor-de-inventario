@@ -2,9 +2,11 @@
   <div class="py-8 mx-auto">
     <div class="mx-auto sm:px-6 lg:px-8">
       <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-10 grid grid-row-3">
-        <div class="grid grid-flow-col auto-cols-max justify-end">
-          <div class="flex flex-1 mr-5">
-            <input type="file" wire:model="file" class="opacity-0 absolute w-20 cursor-pointer" />
+        <div class="grid grid-cols-4 row-start-1">
+          <x-jet-input type="text" wire:model="search" class="mb-5 w-full col-start-1 col-span-2 flex-1"
+            placeholder="Escriba el nombre del producto" />
+          <div class="flex justify-end mr-5">
+            <input type="file" wire:model="file" class="opacity-0 absolute w-24 h-11 cursor-pointer" />
             <span class="bg-green-500 hover:bg-green-600 p-2 -z-10 text-white mb-5 sm:rounded-lg">
               Subir excel
             </span>
@@ -23,7 +25,7 @@
               <span>{{$product->quantity}}</span>
               <button class="w-6 bg-gray-200 rounded-full" wire:click="increment({{$product->id}})">+</button>
             </td>
-            <td class="border p-5 text-center">{{$product->price}}</td>
+            <td class="border p-5 text-center">{{number_format($product->price,2)}}</td>
             <td class="text-center border p-5">
               <div class="grid grid-cols-4">
                 <div class="text-center col-start-2" wire:click="edit({{$product->id}})">
@@ -45,6 +47,9 @@
           </tr>
           @endforeach
         </x-product.table>
+        <div class="my-5">
+          {{ $products->links() }}
+        </div>
       </div>
     </div>
   </div>

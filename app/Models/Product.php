@@ -16,7 +16,7 @@ class Product extends Model
         'price'
         ];
    
-      public function store() {
-           return $this->hasOne(Store::class,'id','store_id');
+    public function store() {
+        return $this->hasOne(Store::class,'id','store_id');
     }
 }

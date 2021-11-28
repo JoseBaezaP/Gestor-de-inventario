@@ -2,8 +2,15 @@
   <div class="py-8 mx-auto">
     <div class="mx-auto sm:px-6 lg:px-8">
       <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-10 grid grid-row-3">
-        <div class="row-start-1 text-right">
-          <button class="bg-green-600 hover:bg-green-700 p-2 text-white mb-5 sm:rounded-lg" wire:click="create">
+        <div class="grid grid-flow-col auto-cols-max justify-end">
+          <div class="flex flex-1 mr-5">
+            <input type="file" wire:model="file" class="opacity-0 absolute w-20 cursor-pointer" />
+            <span class="bg-green-500 hover:bg-green-600 p-2 -z-10 text-white mb-5 sm:rounded-lg">
+              Subir excel
+            </span>
+            </input>
+          </div>
+          <button class="bg-blue-500 hover:bg-blue-600 p-2 text-white mb-5 sm:rounded-lg" wire:click="create">
             Añadir Producto
           </button>
         </div>

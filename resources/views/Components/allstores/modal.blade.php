@@ -1,6 +1,6 @@
 <x-jet-dialog-modal wire:model="visible">
   <x-slot name="title">
-    {{__('Registra una tienda')}}
+    {{__('Informacion de la tienda')}}
   </x-slot>
   <x-slot name="content">
     <x-jet-label class="text-base">Nombre</x-jet-label>

@@ -5,11 +5,17 @@ namespace App\Http\Livewire\Employee;
 use App\Models\Product as ProductModel;
 use App\Models\Store;
 use Livewire\Component;
+use Livewire\WithFileUploads;
+use App\Imports\ProductsImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class Product extends Component
 {
+    use WithFileUploads;
+    
     public $visible = false;
     public ProductModel $product;
+    public $file;
 
     protected $rules = [
         'product.name' => 'required',
@@ -21,6 +27,10 @@ class Product extends Component
     {
         $this->product = ProductModel::make();
         $this->visible = true;
+    }
+
+    public function updatedFile($value) {
+        Excel::import(new ProductsImport, $this->file);
     }
 
     public function edit(ProductModel $product)

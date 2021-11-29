@@ -26,5 +26,5 @@
       </div>
     </div>
   </div>
-  <x-allstores.modal :store="$store" />
+  <x-allstores.shared.modal :store="$store" />
 </div>

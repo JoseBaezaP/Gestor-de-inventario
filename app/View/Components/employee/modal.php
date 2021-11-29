@@ -1,10 +1,10 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\employee;
 
 use Illuminate\View\Component;
 
-class employee.employee-modal extends Component
+class modal extends Component
 {
     /**
      * Create a new component instance.
@@ -23,6 +23,6 @@ class employee.employee-modal extends Component
      */
     public function render()
     {
-        return view('components.employee.employee-modal');
+        return view('components.employee.modal');
     }
 }

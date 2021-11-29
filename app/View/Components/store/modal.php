@@ -1,10 +1,10 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\store;
 
 use Illuminate\View\Component;
 
-class allstores.table extends Component
+class modal extends Component
 {
     /**
      * Create a new component instance.
@@ -23,6 +23,6 @@ class allstores.table extends Component
      */
     public function render()
     {
-        return view('components.allstores.table');
+        return view('components.store.modal');
     }
 }

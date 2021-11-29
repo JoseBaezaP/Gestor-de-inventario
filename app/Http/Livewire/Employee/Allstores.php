@@ -13,7 +13,14 @@ class Allstores extends Component
     use WithPagination;
     
     public $visible = false, $search;
+    public $employee;
     public Store $store;
+
+    protected $rules = [
+        'store.name' => 'required',
+        'store.address' => 'required',
+        'store.phone' => 'required|number',
+    ];
 
     public function updatingSearch()
     {
@@ -23,6 +30,7 @@ class Allstores extends Component
     public function show($id)
     {
         $this->store = Store::findOrFail($id);
+        $this->employee = $this->store->user->name;
         $this->visible = true;
     }
     

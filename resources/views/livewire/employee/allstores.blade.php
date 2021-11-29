@@ -26,5 +26,4 @@
       </div>
     </div>
   </div>
-  <x-allstores.modal :store="$store" />
 </div>
